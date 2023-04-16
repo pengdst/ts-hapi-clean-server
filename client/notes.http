@@ -1,0 +1,36 @@
+### Create Note
+POST http://localhost:5000/notes
+Content-Type: application/json
+
+{
+  "name": "name",
+  "body": "content"
+}
+
+### Get Notes
+GET http://localhost:5000/notes
+Content-Type: application/json
+
+> {% client.global.set("note_id", response.body.data.notes[0].id); %}
+
+### Get Note By ID
+GET http://localhost:5000/notes/{{note_id}}
+Content-Type: application/json
+
+### Update Note By ID
+PUT http://localhost:5000/notes/{{note_id}}
+Content-Type: application/json
+
+{
+  "name": "new name",
+  "body": "new content"
+}
+
+### Delete Note By ID
+DELETE http://localhost:5000/notes/{{note_id}}
+Content-Type: application/json
+
+{
+  "name": "new name",
+  "body": "new content"
+}
