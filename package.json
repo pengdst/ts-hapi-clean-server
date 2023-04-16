@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "ts-node src/app.ts",
+    "start": "NODE_HOST=0.0.0.0 NODE_PORT=9000 ts-node src/app.ts",
     "dev": "nodemon src/app.ts",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
