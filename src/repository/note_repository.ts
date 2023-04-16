@@ -63,5 +63,3 @@ export class NoteInMemoryRepository implements NoteRepository {
 		notes.splice(noteIdx, 1);
 	}
 }
-
-export {type NoteDto};
