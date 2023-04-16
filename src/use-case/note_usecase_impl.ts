@@ -1,4 +1,4 @@
-import {type NoteRepository} from '../domain/note_repository';
+import {type NoteRepository} from '../domain';
 import {
 	type HttpResponse,
 	type Note,

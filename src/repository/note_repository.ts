@@ -1,5 +1,5 @@
 import {uuid} from 'uuidv4';
-import {type NoteRepository} from '../domain/note_repository';
+import {type NoteRepository} from '../domain';
 import {type NoteDto} from './model';
 
 export class NoteInMemoryRepository implements NoteRepository {

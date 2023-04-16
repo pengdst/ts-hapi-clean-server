@@ -3,7 +3,7 @@ import {
 	type CreateNoteRequest,
 	type NoteController, type UpdateNoteRequest,
 } from '../domain/note_controller';
-import {type NoteUsecase} from '../domain/note_usecase';
+import {type NoteUsecase} from '../domain';
 
 export class NoteControllerImpl implements NoteController {
 	constructor(private readonly noteUsecase: NoteUsecase) {
