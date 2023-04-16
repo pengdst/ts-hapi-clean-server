@@ -24,7 +24,7 @@ function getAll(): Note[] {
 	return notes;
 }
 
-function getNote(id: string) {
+function get(id: string): Note {
 	const note = notes.filter(value => value.id === id)[0];
 	if (note === undefined) {
 		throw new Error('Note not found');
@@ -60,4 +60,4 @@ function del(id: string) {
 	notes.splice(noteIdx, 1);
 }
 
-export {del, getAll, update, getNote, create, type Note};
+export {del, getAll, update, get, create, type Note};
