@@ -1,10 +1,10 @@
 import hapi from '@hapi/hapi';
-import routes from './src/route';
+import routes from './routes/route';
 
-const init = async () => {
+const init = async (host: string, port: string | number) => {
 	const server = hapi.server({
-		port: process.env.NODE_PORT ?? 5000,
-		host: 'localhost',
+		port,
+		host,
 		routes: {
 			cors: {
 				origin: ['*'],
@@ -18,6 +18,4 @@ const init = async () => {
 	console.log(`Server running on ${server.info.uri}`);
 };
 
-init().catch(e => {
-	console.error(e.message);
-});
+export default init;
