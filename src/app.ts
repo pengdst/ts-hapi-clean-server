@@ -1,5 +1,4 @@
-import server from './server';
+import Server from './server';
 
-server('localhost', process.env.NODE_PORT ?? 5000).catch(e => {
-	console.error(e.message);
-});
+const server = new Server('localhost', process.env.NODE_PORT ?? 5000);
+server.run();
