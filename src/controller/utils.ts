@@ -1,14 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function bindMethods<T extends Record<string, any>>(target: T): T {
-	const boundMethods = Object.getOwnPropertyNames(Object.getPrototypeOf(target))
-		.filter(prop => typeof target[prop] === 'function')
-		.map(prop => target[prop].bind(target));
+	Object.getOwnPropertyNames(Object.getPrototypeOf(target))
+		.filter((prop: keyof T): prop is keyof T & string => typeof target[prop] === 'function')
+		.forEach((prop: keyof T) => {
+			const method = target[prop];
+			if (typeof method === 'function') {
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+				target[prop] = method.bind(target) as (typeof method & ThisParameterType<typeof method>);
+			}
+		});
 
-	const boundTarget = {...target};
-	boundMethods.forEach((boundMethod, index) => {
-		const prop = Object.getOwnPropertyNames(Object.getPrototypeOf(target))[index];
-		boundTarget[prop as keyof T] = boundMethod;
-	});
-
-	return boundTarget;
+	return target;
 }
