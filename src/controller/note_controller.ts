@@ -4,9 +4,11 @@ import {
 	type NoteController, type UpdateNoteRequest,
 } from '../domain/note_controller';
 import {type NoteUsecase} from '../domain';
+import {bindMethods} from './utils';
 
 export class NoteControllerImpl implements NoteController {
 	constructor(private readonly noteUsecase: NoteUsecase) {
+		bindMethods(this);
 	}
 
 	createNote(
