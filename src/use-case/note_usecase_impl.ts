@@ -62,7 +62,7 @@ export class NoteUsecaseImpl implements NoteUsecase {
 			this.noteRepository.delete(id);
 			return {
 				code: 200,
-				message: 'success create note',
+				message: 'success delete note',
 			};
 		} catch (e) {
 			return handleError(e);
@@ -84,7 +84,7 @@ export class NoteUsecaseImpl implements NoteUsecase {
 			};
 			return {
 				code: 200,
-				message: 'success create note',
+				message: 'success get note',
 				data: {
 					note,
 				},
@@ -108,8 +108,8 @@ export class NoteUsecaseImpl implements NoteUsecase {
 			}));
 
 			return {
-				code: 201,
-				message: 'success create note',
+				code: 200,
+				message: 'success get notes',
 				data: {
 					notes,
 				},
@@ -141,8 +141,8 @@ export class NoteUsecaseImpl implements NoteUsecase {
 			};
 
 			return {
-				code: 201,
-				message: 'success create note',
+				code: 200,
+				message: 'success update note',
 				data: {
 					note,
 				},
