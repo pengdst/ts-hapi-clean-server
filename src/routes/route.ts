@@ -1,8 +1,11 @@
 import {type ServerRoute} from '@hapi/hapi/lib/types/route';
 import {type ResponseToolkit} from '@hapi/hapi';
 import type AppServer from '../server';
+import {NoteControllerImpl} from '../controller/note_controller';
+import {type NoteController} from '../domain';
 
 function routes(server: AppServer) {
+	const noteController: NoteController = new NoteControllerImpl(server.noteUsecase);
 	const routes: ServerRoute[] = [
 		{
 			path: '/healthcheck',
@@ -17,27 +20,27 @@ function routes(server: AppServer) {
 		{
 			path: '/notes',
 			method: 'POST',
-			handler: server.noteController.createNote,
+			handler: noteController.createNote.bind(noteController),
 		},
 		{
 			path: '/notes',
 			method: 'GET',
-			handler: server.noteController.getAllNotes,
+			handler: noteController.getAllNotes.bind(noteController),
 		},
 		{
 			path: '/notes/{id}',
 			method: 'GET',
-			handler: server.noteController.getNote,
+			handler: noteController.getNote.bind(noteController),
 		},
 		{
 			path: '/notes/{id}',
 			method: 'PUT',
-			handler: server.noteController.updateNote,
+			handler: noteController.updateNote.bind(noteController),
 		},
 		{
 			path: '/notes/{id}',
 			method: 'DELETE',
-			handler: server.noteController.deleteNote,
+			handler: noteController.deleteNote.bind(noteController),
 		},
 	];
 
